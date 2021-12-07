@@ -1,9 +1,23 @@
-import { NavStart, NavItem} from "../components/Navbar";
+import React from "react";
+
+import {
+    NavItem,
+    NavMenu,
+    NavStart,
+    Icon
+} from "../components/Navbar";
 
 function Navbar() {
     return(
         <NavStart>
-            <h1> Sup </h1>
+            <NavMenu>
+                <NavItem to="/">
+                    <Icon icon="home"/>
+                </NavItem>
+                <NavItem to="/">
+                    <Icon icon="info"/>
+                </NavItem>
+            </NavMenu>
         </NavStart>
     )
 }

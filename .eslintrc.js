@@ -1,7 +1,8 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true,
     },
     "extends": [
         "eslint:recommended",
@@ -15,8 +16,14 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+
     ],
-    "rules": {
+    "rules": {},
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
+
 };

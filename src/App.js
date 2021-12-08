@@ -4,19 +4,27 @@ import {
     Route
 } from "react-router-dom";
 
-import React from "react";
+import React, {
+    useState,
+    createContext,
+
+} from "react";
 
 import Index from './pages/Index'
 
+export const NavbarContext = createContext(false);
+
 function App() {
+    const [navbarIsActive, setNavbarIsActive] = useState(false);
+
   return (
-      <>
-   <BrowserRouter>
-     <Routes>
-       <Route path="/" element={<Index />}/>
-     </Routes>
-   </BrowserRouter>
-      </>
+    <NavbarContext.Provider value={{navbarIsActive, updateNavbarActive: () => {setNavbarIsActive(!navbarIsActive)}}}>
+       <BrowserRouter>
+         <Routes>
+           <Route path="/" element={<Index />}/>
+         </Routes>
+       </BrowserRouter>
+    </NavbarContext.Provider>
   );
 }
 

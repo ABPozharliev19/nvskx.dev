@@ -17,6 +17,7 @@ module.exports = {
     },
     "plugins": [
         "react",
+        "react/jsx-uses-react"
 
     ],
     "rules": {},

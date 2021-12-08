@@ -1,24 +1,39 @@
-import React from "react";
+import React, {
+} from "react";
 
 import {
-    NavItem,
-    NavMenu,
     NavStart,
-    Icon
+    NavbarEnd,
+    NavItem
 } from "../components/Navbar";
 
+import { NavbarContext} from "../App";
+
 function Navbar() {
-    return(
-        <NavStart>
-            <NavMenu>
-                <NavItem to="/">
-                    <Icon icon="home"/>
-                </NavItem>
-                <NavItem to="/">
-                    <Icon icon="info"/>
-                </NavItem>
-            </NavMenu>
-        </NavStart>
+    return (
+        <NavbarContext.Consumer>
+            {context => {
+                return (
+                    <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
+                        <NavbarEnd>
+                            <NavItem>
+                                <span> Home </span>
+                            </NavItem>
+                            <NavItem>
+                                <span> Projects </span>
+                            </NavItem>
+                            <NavItem>
+                                <span> Achievements </span>
+                            </NavItem>
+                            <NavItem>
+                                <span> Links </span>
+                            </NavItem>
+                        </NavbarEnd>
+                    </NavStart>
+                )
+            }}
+
+        </NavbarContext.Consumer>
     )
 }
 export default Navbar;

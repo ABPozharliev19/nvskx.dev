@@ -3,8 +3,7 @@ import React, {
 
 import {
     NavStart,
-    NavItem,
-    NavbarEnd,
+    NavEnd,
     NavMenu
 } from "../components/Navbar";
 
@@ -13,7 +12,6 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import { NavbarContext} from "../App";
 
 function Navbar() {
-
     const { width } = useWindowDimensions();
 
     return (
@@ -23,38 +21,16 @@ function Navbar() {
                     if (width > 1023) {
                         return (
                             <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
-                                <NavbarEnd isActive={context.navbarIsActive}>
-                                    <NavItem>
-                                        <span> Home </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Projects </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Achievements </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Links </span>
-                                    </NavItem>
-                                </NavbarEnd>
+                                <NavEnd isActive={context.navbarIsActive}>
+                                    <NavItems/>
+                                </NavEnd>
                             </NavStart>
                         )
                     } else {
                         return (
                             <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
                                 <NavMenu isActive={context.navbarIsActive}>
-                                    <NavItem>
-                                        <span> Home </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Projects </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Achievements </span>
-                                    </NavItem>
-                                    <NavItem>
-                                        <span> Links </span>
-                                    </NavItem>
+                                    <NavItems/>
                                 </NavMenu>
                             </NavStart>
                         )

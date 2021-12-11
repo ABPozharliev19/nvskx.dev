@@ -86,7 +86,7 @@ NavMenu.propTypes = {
 
 };
 
-export const NavbarEnd = ({ children }) => {
+export const NavEnd = ({ children }) => {
     return (
     <div className="navbar-end">
         {children}
@@ -94,6 +94,6 @@ export const NavbarEnd = ({ children }) => {
     )
 };
 
-NavbarEnd.propTypes = {
+NavEnd.propTypes = {
     children: PropTypes.any,
 }

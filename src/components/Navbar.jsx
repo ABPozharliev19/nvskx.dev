@@ -33,7 +33,7 @@ NavItem.propTypes = {
     link: PropTypes.string
 };
 
-export const NavBrand = ({ src, isActive, setActive }) => {
+const NavBrand = ({ src, isActive, setActive }) => {
     return (
         <>
             <div className="navbar-brand">
@@ -70,9 +70,9 @@ NavBrand.propTypes = {
     setActive: PropTypes.func,
 };
 
-export const NavMenu = ({ children }) => {
+export const NavMenu = ({ children, isActive }) => {
     return (
-        <div id="nav" className="navbar-menu">
+        <div id="nav" className={`navbar-menu ${isActive ? "is-active" : ""}`}>
             <div className="navbar-start">
                 {children}
             </div>
@@ -82,22 +82,8 @@ export const NavMenu = ({ children }) => {
 
 NavMenu.propTypes = {
     children: PropTypes.any,
-};
+    isActive: PropTypes.bool,
 
-export const Icon = ({icon, text }) => {
-    return (
-        <>
-        <span className="icon">
-            <i className= {`fas fa-${icon.toLowerCase()}`}/>
-        </span>
-        <span>{text}</span>
-        </>
-    )
-};
-
-Icon.propTypes = {
-    icon: PropTypes.string,
-    text: PropTypes.string,
 };
 
 export const NavbarEnd = ({ children }) => {

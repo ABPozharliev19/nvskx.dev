@@ -17,15 +17,22 @@ export const NavbarContext = createContext(false);
 function App() {
     const [navbarIsActive, setNavbarIsActive] = useState(false);
 
-  return (
-    <NavbarContext.Provider value={{navbarIsActive, updateNavbarActive: () => {setNavbarIsActive(!navbarIsActive)}}}>
-       <BrowserRouter>
-         <Routes>
-           <Route path="/" element={<Index />}/>
-         </Routes>
-       </BrowserRouter>
+    const navArgs = {
+        navbarIsActive,
+        updateNavbarActive: () => {
+            setNavbarIsActive(!navbarIsActive)
+        }
+    };
+
+    return (
+    <NavbarContext.Provider value={navArgs}>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Index />}/>
+            </Routes>
+        </BrowserRouter>
     </NavbarContext.Provider>
-  );
+    );
 }
 
 export default App;

@@ -1,44 +1,49 @@
-import { Link } from 'react-router-dom';
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './Navbar.module.css'
+import styles from './Navbar.module.scss'
 
-export const NavStart = ({ children, isActive, setActive }) => {
+export const NavStart = (props) => {
+    NavStart.propTypes = {
+        children: PropTypes.node,
+        isActive: PropTypes.bool,
+        setActive: PropTypes.func,
+    };
+
     return (
         <nav className="navbar is-black" role="navigation" aria-label="main-navigation">
             <div className="container">
-                <NavBrand src={process.env.PUBLIC_URL + "/logo.png"} isActive={isActive} setActive={setActive}/>
-                {children}
+                <NavBrand src={process.env.PUBLIC_URL + "/logo.png"} isActive={props.isActive} setActive={props.setActive}/>
+                {props.children}
             </div>
         </nav>
     )
 };
 
-NavStart.propTypes = {
-    children: PropTypes.any,
-    isActive: PropTypes.bool,
-    setActive: PropTypes.func,
-};
+export const NavItem = (props) => {
+    NavItem.propTypes = {
+        children: PropTypes.node,
+        link: PropTypes.string,
+    };
 
-export const NavItem = ({ children, link }) => {
     return (
-        <Link className="navbar-item" to={{link}}>
-            {children}
-        </Link>
+        <a className="navbar-item" href={props.link}>
+            {props.children}
+        </a>
     )
 }
 
-NavItem.propTypes = {
-    children: PropTypes.any,
-    link: PropTypes.string
-};
+const NavBrand = (props) => {
+    NavBrand.propTypes = {
+        src: PropTypes.string,
+        isActive: PropTypes.bool,
+        setActive: PropTypes.func,
+    };
 
-const NavBrand = ({ src, isActive, setActive }) => {
     return (
         <>
             <div className="navbar-brand">
                 <NavItem link={"/"}>
-                    <img src={src} alt="logo" style={{maxHeight: "2.3rem"}}/>
+                    <img src={props.src} alt="logo" style={{maxHeight: "2.3rem"}}/>
                 </NavItem>
                 <NavItem>
                     <div className={styles.nameAndStack}>
@@ -49,11 +54,11 @@ const NavBrand = ({ src, isActive, setActive }) => {
 
                 <a role="button"
                    style={{height: "4rem"}}
-                   className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+                   className={`navbar-burger burger ${props.isActive ? "is-active" : ""}`}
                    aria-label="menu"
                    aria-expanded="false"
                    data-target="nav"
-                   onClick={() => {setActive()}}
+                   onClick={() => {props.setActive()}}
                 >
                     <span aria-hidden="true"/>
                     <span aria-hidden="true"/>
@@ -64,36 +69,42 @@ const NavBrand = ({ src, isActive, setActive }) => {
     )
 }
 
-NavBrand.propTypes = {
-    src: PropTypes.string,
-    isActive: PropTypes.bool,
-    setActive: PropTypes.func,
-};
+export const NavMenu = (props) => {
+    NavMenu.propTypes = {
+        children: PropTypes.node,
+        isActive: PropTypes.bool,
 
-export const NavMenu = ({ children, isActive }) => {
+    };
+
     return (
-        <div id="nav" className={`navbar-menu ${isActive ? "is-active" : ""}`}>
+        <div id="nav" className={`navbar-menu ${props.isActive ? "is-active" : ""}`}>
             <div className="navbar-start">
-                {children}
+                {props.children}
             </div>
         </div>
     )
 };
 
-NavMenu.propTypes = {
-    children: PropTypes.any,
-    isActive: PropTypes.bool,
+export const NavEnd = (props) => {
+    NavEnd.propTypes = {
+        children: PropTypes.node,
+    };
 
-};
-
-export const NavEnd = ({ children }) => {
     return (
     <div className="navbar-end">
-        {children}
+        {props.children}
     </div>
     )
 };
 
-NavEnd.propTypes = {
-    children: PropTypes.any,
+export const NavText = (props) => {
+    NavText.propTypes = {
+        children: PropTypes.node,
+        isActive: PropTypes.bool
+    };
+
+    return (
+        <span className={`${props.isActive ? styles.navText : ""} `}> {props.children} </span>
+    )
 }
+

@@ -7,7 +7,6 @@ import {
 import React, {
     useState,
     createContext,
-
 } from "react";
 
 import Index from './pages/Index'
@@ -28,7 +27,10 @@ function App() {
     <NavbarContext.Provider value={navArgs}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Index />}/>
+                <Route path="/" element={<Index/>}/>
+                <Route path="projects" element={<Index/>}/>
+                <Route path="achievements" element={<Index/>}/>
+                <Route path="links" element={<Index/>}/>
             </Routes>
         </BrowserRouter>
     </NavbarContext.Provider>

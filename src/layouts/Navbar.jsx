@@ -9,34 +9,26 @@ import {
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
-import { NavbarContext} from "../App";
+import { NavbarContext } from "../App";
+
+import {NavItems} from "../components/NavItems";
 
 function Navbar() {
-    const { width } = useWindowDimensions();
+    const {width} = useWindowDimensions();
+
+    const EndOrMenu = width > 1023 ? NavEnd : NavMenu;
 
     return (
         <NavbarContext.Consumer>
             {context => {
-                {
-                    if (width > 1023) {
-                        return (
-                            <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
-                                <NavEnd isActive={context.navbarIsActive}>
-                                    <NavItems/>
-                                </NavEnd>
-                            </NavStart>
-                        )
-                    } else {
-                        return (
-                            <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
-                                <NavMenu isActive={context.navbarIsActive}>
-                                    <NavItems/>
-                                </NavMenu>
-                            </NavStart>
-                        )
-                    }
-                }
-            }}
+                {return (
+                        <NavStart isActive={context.navbarIsActive} setActive={context.updateNavbarActive}>
+                            <EndOrMenu isActive={context.navbarIsActive}>
+                                <NavItems/>
+                            </EndOrMenu>
+                        </NavStart>
+                    )
+                }}}
         </NavbarContext.Consumer>
     )
 }

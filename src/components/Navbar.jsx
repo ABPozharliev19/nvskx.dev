@@ -12,7 +12,7 @@ export const NavStart = (props) => {
     return (
         <nav className="navbar is-black" role="navigation" aria-label="main-navigation">
             <div className="container">
-                <NavBrand src={process.env.PUBLIC_URL + "/logo.png"} isActive={props.isActive} setActive={props.setActive}/>
+                <NavBrand src={process.env.PUBLIC_URL + "/placeholder.png"} isActive={props.isActive} setActive={props.setActive}/>
                 {props.children}
             </div>
         </nav>
@@ -43,7 +43,7 @@ const NavBrand = (props) => {
         <>
             <div className="navbar-brand">
                 <NavItem link={"/"}>
-                    <img src={props.src} alt="logo" style={{maxHeight: "2.3rem"}}/>
+                    <img src={props.src} className={styles.navBrand} alt="logo"/>
                 </NavItem>
                 <NavItem>
                     <div className={styles.nameAndStack}>

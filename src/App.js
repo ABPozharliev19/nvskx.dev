@@ -30,7 +30,6 @@ function App() {
                 <Route path="/" element={<Index/>}/>
                 <Route path="projects" element={<Index/>}/>
                 <Route path="achievements" element={<Index/>}/>
-                <Route path="links" element={<Index/>}/>
             </Routes>
         </BrowserRouter>
     </NavbarContext.Provider>

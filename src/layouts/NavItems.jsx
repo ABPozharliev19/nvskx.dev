@@ -1,7 +1,7 @@
 import {
     NavItem,
     NavText,
-} from "./Navbar";
+} from "../components/Navbar";
 import React from "react";
 
 export const NavItems = () => {
@@ -17,9 +17,6 @@ export const NavItems = () => {
             </NavItem>
             <NavItem link="/achievements">
                 <NavText isActive={url==="/achievements"}> Achievements </NavText>
-            </NavItem>
-            <NavItem link="/links" >
-                <NavText isActive={url==="/links"}> Links </NavText>
             </NavItem>
         </>
     )

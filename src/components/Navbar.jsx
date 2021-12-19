@@ -23,14 +23,30 @@ export const NavItem = (props) => {
     NavItem.propTypes = {
         children: PropTypes.node,
         link: PropTypes.string,
+        isBlank: PropTypes.bool,
     };
 
     return (
-        <a className="navbar-item" href={props.link}>
+        <a className="navbar-item" href={props.link} target={`${props.isBlank ? "_blank" : ""}`}>
             {props.children}
         </a>
     )
 }
+
+const NavIcon = (props) => {
+    NavIcon.propTypes = {
+        icon: PropTypes.string,
+        maxH: PropTypes.string,
+    }
+
+    return (
+        <>
+            <img src={`${process.env.PUBLIC_URL}/navIcons/${props.icon.toLowerCase()}.png`}
+                 style={{maxHeight: props.maxH}}
+            />
+        </>
+    )
+};
 
 const NavBrand = (props) => {
     NavBrand.propTypes = {
@@ -50,6 +66,12 @@ const NavBrand = (props) => {
                             <span> Atanas Pozharliev</span>
                             <span> Backend Dev. </span>
                     </div>
+                </NavItem>
+                <NavItem link="https://github.com/ABPozharliev19" isBlank={true}>
+                        <NavIcon icon="GitHub" maxH="2.3rem"/>
+                </NavItem>
+                <NavItem link="https://www.linkedin.com/in/atanas-pozharliev-6012b0218/" isBlank={true}>
+                    <NavIcon icon="Linkedin" maxH="2rem"/>
                 </NavItem>
 
                 <a role="button"
@@ -107,4 +129,6 @@ export const NavText = (props) => {
         <span className={`${props.isActive ? styles.navText : ""} `}> {props.children} </span>
     )
 }
+
+
 

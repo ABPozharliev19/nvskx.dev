@@ -11,7 +11,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import { NavbarContext } from "../App";
 
-import {NavItems} from "./NavItems";
+import { NavItems } from "./NavItems";
 
 function Navbar() {
     const {width} = useWindowDimensions();
